@@ -1,0 +1,21 @@
+<ion-view view-title="">
+  <ion-content>
+    <div class="card">
+    	<div class="item item-divider">
+    		{{exhibitor.name}}
+    	</div>
+    	<div class="item item-text-wrap">
+    		<div ng-show="exhibitor.address && exhibitor.city && exhibitor.state && exhibitor.zip">
+                <p><b>Address:</b></p>
+                <div style="padding-left:20px;">
+                    <p>{{exhibitor.address}}</p>
+                    <p>{{exhibitor.city}}, {{exhibitor.state}} {{exhibitor.zip}}</p>
+                </div>
+            </div>
+            <p ng-show="exhibitor.staff.length > 1"><b>Exhibitors:</b> <span style="display:block; padding-left:20px;" ng-repeat="exhibitor in exhibitor.staff">{{exhibitor}}</span></p>
+            <p ng-show="exhibitor.staff.length === 1"><b>Exhibitor:</b> {{exhibitor.staff[0]}}</p>
+            <p ng-show="exhibitor.description"><b>Description:</b> {{exhibitor.description}}</p>
+    	</div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+<ion-view view-title="{{speaker.name}}">
+  <ion-content>
+    <div class="card">
+    	<div class="item item-divider">
+    		{{speaker.session}} Speaker
+    	</div>
+    	<div class="item item-text-wrap">
+    		<p ng-show="speaker.day"><b>Day:</b> {{speaker.day}}</p>
+    		<p ng-show="speaker.time"><b>Time:</b> {{speaker.time}}</p>
+    		<p ng-show="speaker.location"><b>Location:</b> {{speaker.location}}</p>
+    		<p ng-show="speaker.title"><b>Presentation:</b> {{speaker.title}}</p>
+    	</div>
+    </div>
+  </ion-content>
+</ion-view>

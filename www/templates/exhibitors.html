@@ -1,0 +1,9 @@
+<ion-view view-title="Exhibitors">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="exhibitor in exhibitors" ui-sref="app.exhibitor({exhibitor: $index})">
+        {{exhibitor.name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

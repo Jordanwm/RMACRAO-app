@@ -1,0 +1,9 @@
+<ion-view view-title="{{day}}">
+  <ion-content>
+    <ion-list>
+		<ion-item ng-repeat="session in sessions" ui-sref="app.events({day: dayId, session: $index})">
+			{{session.time}} - {{session.name}}
+		</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
