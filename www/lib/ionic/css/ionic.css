@@ -3148,7 +3148,7 @@ a.subdued {
       background-image: linear-gradient(180deg, #6b46e5, #6b46e5 50%, transparent 50%); }
   .bar.bar-dark {
     border-color: #111;
-    background-color: #444444;
+    background-color: red;
     background-image: linear-gradient(0deg, #111, #111 50%, transparent 50%);
     color: #fff; }
     .bar.bar-dark .title {
@@ -3244,9 +3244,9 @@ a.subdued {
 .bar-light .button {
   border-color: #ddd;
   background-color: white;
-  color: #444; }
+  color: red; }
   .bar-light .button:hover {
-    color: #444;
+    color: red;
     text-decoration: none; }
   .bar-light .button.active, .bar-light .button.activated {
     border-color: #ccc;
@@ -3256,7 +3256,7 @@ a.subdued {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #444;
+    color: red;
     font-size: 17px; }
   .bar-light .button.button-icon {
     border-color: transparent;
@@ -3265,19 +3265,19 @@ a.subdued {
 .bar-stable .button {
   border-color: #b2b2b2;
   background-color: #f8f8f8;
-  color: #444; }
+  color: red; }
   .bar-stable .button:hover {
-    color: #444;
+    color: #241F78;
     text-decoration: none; }
   .bar-stable .button.active, .bar-stable .button.activated {
-    border-color: #a2a2a2;
-    background-color: #e5e5e5;
+    border-color: red;
+    background-color: red;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
   .bar-stable .button.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #444;
+    color: #241F78;
     font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
@@ -3411,7 +3411,7 @@ a.subdued {
 
 .bar-dark .button {
   border-color: #111;
-  background-color: #444444;
+  background-color: red;
   color: #fff; }
   .bar-dark .button:hover {
     color: #fff;
@@ -7392,7 +7392,7 @@ a.button {
  * --------------------------------------------------
  */
 .rounded {
-  border-radius: 4px; }
+  border-radius: 8px; }
 
 /**
  * Utility Colors

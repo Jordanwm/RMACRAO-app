@@ -1,1 +1,44 @@
 /* Empty. Add your own CSS if you like */
+.bar.bar-stable {
+	background-color: #241F78;
+}
+.bar.bar-stable .title{
+	color: white;
+}
+.bar.bar-stable .button {
+	color: white;
+}
+.text-center {
+	color: #241F78;
+}
+.button.button-stable {
+	background-color: #241F78;
+	color: white;
+}
+.button.button-stable.activated {
+	background-color: #3830CF;
+}
+.button.button-stable:hover {
+	color: white;
+}
+.item-divider {
+	text-align: center;
+}
+.logo {
+	width: 50%;
+	height: auto;
+	margin-left: 25%;
+}
+.button.button-balanced {
+	background-color: #2E633C;
+	border-color: #241F78;
+	width: 45%;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.button.button-balanced.activated {
+	background-color: #4EA365;
+	border-color: #241F78;
+}
