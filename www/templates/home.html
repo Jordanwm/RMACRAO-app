@@ -1,8 +1,11 @@
 <ion-view view-title="RMACRAO">
   <ion-content class="padding">
     <img src="logo.png" alt = "RMACRAO Logo" style = "width:100%;height:auto;">
-    <h3 class="text-center">Welcome to the RMACRAO 2015 Conference</h3>
-    <h5 class="text-center">July 17th - July 20th, 2013</h5>
+    <h3 class="text-center">Welcome to the {{year.title}}</h3>
+    <h5 class="text-center">{{year.sdate | date: "EEE MMM d"}} - {{year.fdate | date: "EEE MMM d, yyyy"}}</h5>
+    <h5 class="text-center">{{year.motto}}</h5>
+    <h5 class="text-center">Hotel: {{year.hotel}}</h5>
+    <h5 class="text-center">{{year.city}}, {{year.state}}</h5>
     <button class = "button button-balanced" ui-sref = "app.days">
         Sessions
     </button>

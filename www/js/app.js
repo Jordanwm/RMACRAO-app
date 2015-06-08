@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, Exhibitors) {
+.run(function($ionicPlatform, $http, Year) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,8 +17,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-    Exhibitors.getAll();
+    
+    Year.loadFromWeb();
 
   });
 })
@@ -32,20 +32,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: "templates/menu.html",
   })
 
-  .state('app.home', {
-    url: "/home",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/home.html"
-      }
-    }
-  })
-
   .state('app.welcome', {
     url: "/welcome",
     views: {
       'menuContent': {
-        templateUrl: "templates/welcome.html"
+        controller: 'WelcomeCtrl',
+        templateUrl: "templates/welcome.html",
+        resolve: {
+          yearPromise: function(Year){
+            return Year.getYear();
+          }
+        }
+      }
+    }
+  })
+
+  .state('app.home', {
+    url: "/home",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/home.html",
+        controller: "HomeCtrl",
+        resolve: {
+          yearPromise: function(Year){
+            return Year.getYear();
+          }
+        }
       }
     }
   })

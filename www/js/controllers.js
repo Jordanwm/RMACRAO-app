@@ -1,5 +1,13 @@
 angular.module('starter.controllers', [])
 
+.controller('WelcomeCtrl', function($scope, Year){
+  $scope.year = Year.year;
+})
+
+.controller('HomeCtrl', function($scope, Year){
+  $scope.year = Year.year;
+})
+
 .controller('DaysCtrl', function($scope, Sessions) {
   $scope.days = Sessions.days;
 })

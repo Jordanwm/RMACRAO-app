@@ -1,57 +1,50 @@
-angular.module('starter.services', [])
+angular.module('ionic.utils', [])
+
+.factory('$localStorage', function($window){
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    }
+  }
+});
+
+//STARTER SERVICES
+angular.module('starter.services', ['ionic.utils'])
+
+.factory('Year', function($http, $localStorage, $q){
+  var o = {};
+  o.year = [];
+  o.getYear = function(){
+    var dfr = $q.defer()
+
+    dfr.resolve(o.year = angular.copy($localStorage.getObject('year')));
+
+    return dfr.promise;
+  };
+  o.loadFromWeb = function(){
+    return $http.get('http://mobiledev.rmacrao.org/api/year').then(function(res){
+      $localStorage.setObject('year', angular.copy(res.data));
+    });
+  };
+  return o;
+})
 
 .factory('Exhibitors', function($http){
   var o = {};
-  o.exhibitors = [
-    /*{
-      name: "CollegeNET",
-      address: "805 SW Broadway, Suite 1600",
-      city: "Portland",
-      state: "OR",
-      zip: "97205",
-      staff: ["Bruce Sylva"],
-      description: "CollegeNET, Inc. is a leader in providing web-based on-demand technologies, helping institutions improve services to students and prospects, reduce paper consumption and save money. CollegeNET’s Series 25© web-based administrative systems provide optimized course and event scheduling and management, e-calendar publishing, ticket and merchandise sales, facilities and resource management, and master planning."
-    },
-    {
-      name: "CollegeSource, Inc.",
-      address: "1327 E Kemper Rd, Suite 3000",
-      city: "Cincinnati",
-      state: "OH",
-      zip: "45246",
-      staff: ["Melani Pratt", "Shelly Jackson"],
-      description: "CollegeSource, Inc. has been creating information technology solutions for higher education since 1971. More than 2,000 institutions and millions of users worldwide utilize CollegeSource products for degree audit, degree planning, and transfer articulation."
-    },
-    {
-      name: "College Scheduler LLC",
-      address: "389 Connors Ct, Suite E",
-      city: "Chico",
-      state: "CA",
-      zip: "95926",
-      staff: ["Haley Zitnitsky", "Jonathan Dela Cruz", "Brett Conner"],
-      description: "College Scheduler provides a web-basd schedule planner for use by students to create schedules each semester. Our institutions experience increased enrollment credit hours, increased on time graduation and time savings in academic advising! Real time course demand reports available to Registrar’s Office. Works with Banner, Datatel, PeopleSoft & Homegrown. Used by 52+ institutions around the country large & small"
-    },
-    {
-      name: "Credentials Solutions",
-      address: "436 W Frontage Rd, Suite 200",
-      city: "Northfield",
-      state: "IL",
-      zip: "60093",
-      staff: ["Thomas McKechney"],
-      description: "Founded in 1997, Credentials Solutions specializes in a suite of online services. TranscriptsPlus®, working with SIS integrated software RoboRegistrar®, automates the delivery of all forms of electronic transcripts as well as the printing/mailing of paper transcripts. The ParkingPlus® service issues and manages parking permits.  All services include 12 hour/day customer service."
-    },
-    {
-      name: "Digital Architecture",
-      address: "5015 South Florida Avenue",
-      city: "Lakeland", 
-      state: "FL",
-      zip: "33813",
-      staff: ["John Schoenborn"],
-      description: "Digital Architecture transforms the way colleges and universities manage curriculum from inception, through the approval process and publication.  Acalog™ is the leading academic catalog management system, delivering thousands of e-catalogs at hundreds of colleges and universities. Our curriculum management system, Curriculog™, transforms a cumbersome and complex curriculum path into an intuitive, automated process."
-    }*/
-  ];
+  o.exhibitors = [];
   o.getAll = function(){
-    $http.get('localhost:8000/api/exhibitors').success(function(data){
-      o.exhibitors = angular.copy(data);
+    return $http.get('http://mobiledev.rmacrao.org/api/exhibitors').then(function(res){
+      o.exhibitors = angular.copy(res.data);
+      console.log(o);
     });
   };
   return o;
