@@ -26,7 +26,7 @@ angular.module('starter.services', ['ionic.utils'])
   o.getYear = function(){
     var dfr = $q.defer()
 
-    dfr.resolve(o.year = angular.copy($localStorage.getObject('year')));
+    dfr.resolve(o.year = $localStorage.getObject('year'));
 
     return dfr.promise;
   };
@@ -38,13 +38,26 @@ angular.module('starter.services', ['ionic.utils'])
   return o;
 })
 
-.factory('Exhibitors', function($http){
+.factory('Exhibitors', function($http, $q, $localStorage){
   var o = {};
   o.exhibitors = [];
-  o.getAll = function(){
+  o.getExhibitor = function(index) {
+    var dfr = $q.defer();
+
+    dfr.resolve($localStorage.getObject('exhibitors')[index]);
+
+    return dfr.promise;
+  }
+  o.getExhibitors = function() {
+    var dfr = $q.defer();
+
+    dfr.resolve(o.exhibitors = $localStorage.getObject('exhibitors'));
+
+    return dfr.promise;
+  }
+  o.loadFromWeb = function(){
     return $http.get('http://mobiledev.rmacrao.org/api/exhibitors').then(function(res){
-      o.exhibitors = angular.copy(res.data);
-      console.log(o);
+      $localStorage.setObject('exhibitors', angular.copy(res.data));
     });
   };
   return o;

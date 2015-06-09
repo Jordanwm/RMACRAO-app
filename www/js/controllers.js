@@ -49,8 +49,8 @@ angular.module('starter.controllers', [])
   $scope.exhibitors = Exhibitors.exhibitors;
 })
 
-.controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitors) {
-  $scope.exhibitor = Exhibitors.exhibitors[$stateParams.exhibitor];
+.controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitor) {
+  $scope.exhibitor = Exhibitor;
 })
 
 .controller('MessageCtrl', function($scope, Year){

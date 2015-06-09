@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, $http, $location, Year) {
+.run(function($ionicPlatform, $http, $location, Year, Exhibitors) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
     
     Year.loadFromWeb();
+    Exhibitors.loadFromWeb();
 
     //$location.path("/welcome");
   });
@@ -124,7 +125,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/exhibitors.html",
-        controller: 'ExhibitorsCtrl'
+        controller: 'ExhibitorsCtrl',
+        resolve: {
+          exhibitorsPromise: function(Exhibitors){
+            return Exhibitors.getExhibitors();
+          }
+        }
       }
     }
   })
@@ -134,7 +140,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/exhibitor.html",
-        controller: 'ExhibitorCtrl'
+        controller: 'ExhibitorCtrl',
+        resolve: {
+          Exhibitor: function(Exhibitors, $stateParams){
+            return Exhibitors.getExhibitor($stateParams.exhibitor);
+          }
+        }
+      }
+    }
+  })
+
+  .state('app.info', {
+    url: "/info",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/info.html",
+      }
+    }
+  })
+
+  .state('app.maps', {
+    url: "/maps",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/maps.html"
       }
     }
   })
