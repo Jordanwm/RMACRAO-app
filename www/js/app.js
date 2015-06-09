@@ -20,8 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     
     Year.loadFromWeb();
 
-    $location.path("/welcome");
-
+    //$location.path("/welcome");
   });
 })
 

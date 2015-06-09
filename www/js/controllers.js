@@ -1,11 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('WelcomeCtrl', function($scope, $ionicHistory, Year){
+.controller('WelcomeCtrl', function($scope, $ionicHistory, $ionicScrollDelegate, Year){
   $scope.year = Year.year;
   $ionicHistory.nextViewOptions({
     disableBack: true
-});
-
+  });
+  $scope.show = false;
+  $scope.showMessage = function(){
+    $scope.show = !$scope.show;
+    $ionicScrollDelegate.resize()
+  };
 })
 
 .controller('HomeCtrl', function($scope, Year){
