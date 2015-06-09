@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, $http, Year) {
+.run(function($ionicPlatform, $http, $location, Year) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +20,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     
     Year.loadFromWeb();
 
+    $location.path("/welcome");
+
   });
 })
 
@@ -32,17 +34,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: "templates/menu.html",
   })
 
-  .state('app.welcome', {
+  .state('welcome', {
     url: "/welcome",
-    views: {
-      'menuContent': {
-        controller: 'WelcomeCtrl',
-        templateUrl: "templates/welcome.html",
-        resolve: {
-          yearPromise: function(Year){
-            return Year.getYear();
-          }
-        }
+    controller: 'WelcomeCtrl',
+    templateUrl: "templates/welcome.html",
+    resolve: {
+      yearPromise: function(Year){
+        return Year.getYear();
       }
     }
   })
@@ -140,7 +138,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'ExhibitorCtrl'
       }
     }
+  })
+
+  .state('app.president_message', {
+    url: "/message",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/message.html",
+        controller: "MessageCtrl",
+        resolve: {
+          yearPromise: function(Year){
+            return Year.getYear();
+          }
+        }
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/welcome');
+  $urlRouterProvider.otherwise('/app/home');
 });

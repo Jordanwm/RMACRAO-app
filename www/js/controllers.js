@@ -1,7 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('WelcomeCtrl', function($scope, Year){
+.controller('WelcomeCtrl', function($scope, $ionicHistory, Year){
   $scope.year = Year.year;
+  $ionicHistory.nextViewOptions({
+    disableBack: true
+});
+
 })
 
 .controller('HomeCtrl', function($scope, Year){
@@ -43,4 +47,8 @@ angular.module('starter.controllers', [])
 
 .controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitors) {
   $scope.exhibitor = Exhibitors.exhibitors[$stateParams.exhibitor];
+})
+
+.controller('MessageCtrl', function($scope, Year){
+  $scope.year = Year.year;
 });
