@@ -42,3 +42,7 @@
 	background-color: #4EA365;
 	border-color: #241F78;
 }
+.scroll-content{
+	background: url(../logoFade.png) no-repeat bottom center fixed;
+	background-size: 75% auto;
+}
