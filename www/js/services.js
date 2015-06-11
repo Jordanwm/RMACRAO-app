@@ -63,41 +63,28 @@ angular.module('starter.services', ['ionic.utils'])
   return o;
 })
 
-.factory('Speakers', function(){
-	var o = {};
-	o.speakers = [
-    {
-      name: "Dr. Alan C. Lamborn",
-      session: "Opening Session",
-      day: "Wednesday, July 17th",
-      time: "12:30 - 2:00",
-      location: "Grand Ballroom",
-      title: "The Case for Interdivisional Collaboration: A Sudden Transition from Best Practice to Necessity"
-    },
-    {
-      name: "Mike Reilly",
-      session: "General Session",
-      day: "Thursday, July 18th",
-      time: "1:30 - 3:00",
-      location: "Grand Ballroom",
-      title: "Federal & AACRAO Updates"
-    },
-    {
-      name: "Robin Brown, Ph.D.",
-      session: "Closing Session",
-      day: "Friday, July 19th",
-      time: "11:00 - 12:30",
-      location: "Grand Ballroom",
-      title: "You've Got to Bring It!"
-    },
-    {
-      name: "LeRoy Rooker",
-      session: "FERPA Update",
-      day: "Thursday, July 18th",
-      time: "3:15 - 4:15 & 4:30 - 5:30",
-      location: "Windsor I"
-    }
-  ];
+.factory('Speakers', function($http, $q, $localStorage){
+  var o = {};
+  o.speakers = [];
+  o.getSpeaker = function(index) {
+    var dfr = $q.defer();
+
+    dfr.resolve($localStorage.getObject('speakers')[index]);
+
+    return dfr.promise;
+  }
+  o.getSpeakers = function() {
+    var dfr = $q.defer();
+
+    dfr.resolve(o.speakers = $localStorage.getObject('speakers'));
+
+    return dfr.promise;
+  }
+  o.loadFromWeb = function(){
+    return $http.get('http://mobiledev.rmacrao.org/api/speakers').then(function(res){
+      $localStorage.setObject('speakers', angular.copy(res.data));
+    });
+  };
   return o;
 })
 

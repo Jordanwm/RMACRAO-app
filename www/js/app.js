@@ -105,7 +105,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/speakers.html",
-        controller: 'SpeakersCtrl'
+        controller: 'SpeakersCtrl',
+        resolve: {
+          speakersPromise: function(Speakers){
+            return Speakers.getSpeakers();
+          }
+        }
       }
     }
   })
@@ -115,7 +120,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/speaker.html",
-        controller: 'SpeakerCtrl'
+        controller: 'SpeakerCtrl',
+        resolve: {
+          Speaker: function(Speakers, $stateParams){
+            return Speakers.getSpeaker($stateParams.speaker);
+          }
+        }
       }
     }
   })

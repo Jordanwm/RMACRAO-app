@@ -37,21 +37,25 @@ angular.module('starter.controllers', [])
   $scope.event = Sessions.days[$stateParams.day].sessions[$stateParams.session].events[$stateParams.event];
 })
 
+
+
 .controller('SpeakersCtrl', function($scope, Speakers) {
   $scope.speakers = Speakers.speakers;
 })
-
-.controller('SpeakerCtrl', function($scope, $stateParams, Speakers){
-  $scope.speaker = Speakers.speakers[$stateParams.speaker];
-})
-
 .controller('ExhibitorsCtrl', function($scope, Exhibitors) {
   $scope.exhibitors = Exhibitors.exhibitors;
 })
 
+.controller('SpeakerCtrl', function($scope, $stateParams, Speaker){
+  $scope.speaker = Speaker;
+})
 .controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitor) {
   $scope.exhibitor = Exhibitor;
 })
+
+
+
+
 
 .controller('MessageCtrl', function($scope, Year){
   $scope.year = Year.year;
