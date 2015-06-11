@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    
+
     Year.loadFromWeb();
     Exhibitors.loadFromWeb();
 

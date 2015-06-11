@@ -31,8 +31,8 @@ angular.module('starter.services', ['ionic.utils'])
     return dfr.promise;
   };
   o.loadFromWeb = function(){
-    return $http.get('http://mobiledev.rmacrao.org/api/year').then(function(res){
-      $localStorage.setObject('year', angular.copy(res.data));
+    return $http.get('http://mobiledev.rmacrao.org/api/year').success(function(data){
+      $localStorage.setObject('year', angular.copy(data));
     });
   };
   return o;
