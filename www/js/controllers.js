@@ -22,22 +22,20 @@ angular.module('starter.controllers', [])
 
 .controller('SessionsCtrl', function($scope, $stateParams, DaySessions) {
   $scope.dayId = $stateParams.day;
-  $scope.sessions = DaySessions;
+  $scope.day = DaySessions;
+  $scope.sessions = DaySessions.sessions;
 })
 
 .controller('EventsCtrl', function($scope, $stateParams, Sessions, SessionEvents) {
 	$scope.dayId = $stateParams.day;
 	$scope.sessionId = $stateParams.session;
-  $scope.time = Sessions.days[$stateParams.day].sessions[$stateParams.session].time;
-  $scope.events = Sessions.days[$stateParams.day].sessions[$stateParams.session].events;
-  $scope.events = eventspromise;
+  $scope.session = SessionEvents;
+  $scope.events = SessionEvents.events;
 })
 
-.controller('EventCtrl', function($scope, $stateParams, Sessions) {
-  $scope.event = Sessions.days[$stateParams.day].sessions[$stateParams.session].events[$stateParams.event];
+.controller('EventCtrl', function($scope, Event) {
+  $scope.event = Event;
 })
-
-
 
 .controller('SpeakersCtrl', function($scope, Speakers) {
   $scope.speakers = Speakers.speakers;

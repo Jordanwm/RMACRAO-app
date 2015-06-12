@@ -103,17 +103,24 @@ angular.module('starter.services', ['ionic.utils'])
   o.getSessions = function(id) {
     var dfr = $q.defer();
 
-    dfr.resolve($localStorage.getObject('days')[id].sessions);
+    dfr.resolve($localStorage.getObject('days')[id]);
 
     return dfr.promise;
   };
-  o.getEvents = function(id) {
+  o.getEvents = function(dayId, sessionId) {
     var dfr = $q.defer();
 
-    dfr.resolve($localStorage.getObject('sessions')[id].sessions);
+    dfr.resolve($localStorage.getObject('days')[dayId].sessions[sessionId]);
 
     return dfr.promise;
   };
+  o.getEvent = function(dayId, sessionId, eventId){
+    var dfr = $q.defer();
+
+    dfr.resolve($localStorage.getObject('days')[dayId].sessions[sessionId].events[eventId]);
+
+    return dfr.promise;
+  }
   o.loadFromWeb = function(){
     return $http.get('http://mobiledev.rmacrao.org/api/days').then(function(res){
       $localStorage.setObject('days', angular.copy(res.data));

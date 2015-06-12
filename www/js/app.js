@@ -101,8 +101,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         templateUrl: "templates/events.html",
         controller: 'EventsCtrl',
         resolve: {
-          SessionEvents: function(Events, $stateParams){
-            return Events.getEvents($stateParams.session).then(function(data){
+          SessionEvents: function(Sessions, $stateParams){
+            return Sessions.getEvents($stateParams.day, $stateParams.session).then(function(data){
               return data;
             });
           }
@@ -116,7 +116,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/event.html",
-        controller: 'EventCtrl'
+        controller: 'EventCtrl',
+        resolve: {
+          Event: function(Sessions, $stateParams){
+            return Sessions.getEvent($stateParams.day, $stateParams.session, $stateParams.event).then(function(data){
+              return data;
+            });
+          }
+        }
       }
     }
   })
