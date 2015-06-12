@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="exhibitor in exhibitors" ui-sref="app.exhibitor({exhibitor: $index})">
-        {{exhibitor.name}}
+        <p>{{exhibitor.name}}</p>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -1,15 +1,20 @@
 <ion-view view-title="">
   <ion-content>
     <div class="card">
-    	<div class="item item-divider">
-    		{{event.title}}
-    	</div>
     	<div class="item item-text-wrap">
-    		<p ng-show="event.description"><b>Description:</b> <span style="display:block; padding-left:20px;">{{event.description}}</span></p>
-            <p ng-show="event.presenters.length > 1"><b>Presenters:</b> <span style="display:block; padding-left:20px;" ng-repeat="presenter in event.presenters">{{presenter}}</span></p>
-            <p ng-show="event.presenters.length === 1"><b>Presenter:</b> {{event.presenters[0]}}</p>
-            <p ng-show="event.intro"><b>Intro/Facilitator:</b> {{event.intro}}</p>
-            <p ng-show="event.location"><b>Location:</b> {{event.location}}</p>
+            <p ng-show"event.title"><b>Title:</b><span class="padding-left">{{event.title}}</span></p>
+
+    		<p ng-show="event.description"><b>Description:</b> <span class="padding-left">{{event.description}}</span></p>
+
+            <p ng-show="event.presenters.length > 1"><b>Presenters:</b> <span class="padding-left" ng-repeat="presenter in event.presenters">{{presenter.name}}<i ng-show="presenter.title">, {{presenter.title}}</i></span></p>
+
+            <p ng-show="event.presenters.length === 1"><b>Presenter:</b> <span class="padding-left">{{event.presenters[0].name}}<i ng-show="event.presenters[0].title">, {{event.presenters[0].title}}</i></span></p>
+
+            <p ng-show="event.facilitators > 1"><b>Intro/Facilitator:</b> <span class="padding-left" ng-repeat="facilitator in event.facilitators">{{facilitator.name}}<i ng-show="facilitator.title">, {{facilitator.title}}</i></span></p>
+
+            <p ng-show="event.facilitators.length === 1"><b>Facilitator:</b> <span class="padding-left">{{event.facilitators[0].name}}<i ng-show="event.facilitators[0].title">, {{event.facilitators[0].title}}</i></span></p>
+
+            <p ng-show="event.location"><b>Location:</b> <span class="padding-left">{{event.location}}</span></p>
     	</div>
     </div>
   </ion-content>

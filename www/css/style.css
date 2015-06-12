@@ -46,3 +46,7 @@
 	background: url(../logoFade.png) no-repeat bottom center fixed;
 	background-size: 75% auto;
 }
+.padding-left {
+	padding-left:20px;
+	display:block;
+}

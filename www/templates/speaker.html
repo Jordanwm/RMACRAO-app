@@ -6,10 +6,10 @@
     	</div>
     	<div class="item item-text-wrap">
             <img ng-src="http://mobiledev.rmacrao.org/{{speaker.img_path}}" onerror="this.style.display = 'none'" ng-show="speaker.img_path">
-    		<p ng-show="speaker.day"><b>Day:</b> {{speaker.day | date: "EEEE MMMM d, yyyy"}}</p>
-    		<p ng-show="speaker.stime && speaker.ftime"><b>Time:</b> {{speaker.stime | date: "h:mm a"}} - {{speaker.ftime | date: "h:mm a"}}</p>
-    		<p ng-show="speaker.location"><b>Location:</b> {{speaker.location}}</p>
-    		<p ng-show="speaker.title"><b>Presentation:</b> {{speaker.title}}</p>
+    		<p ng-show="speaker.day"><b>Day:</b> <span class="padding-left">{{speaker.day | date: "EEEE MMMM d, yyyy"}}</span></p>
+    		<p ng-show="speaker.stime && speaker.ftime"><b>Time:</b> <span class="padding-left">{{speaker.stime | date: "h:mm a"}} - {{speaker.ftime | date: "h:mm a"}}</span></p>
+    		<p ng-show="speaker.location"><b>Location:</b> <span class="padding-left">{{speaker.location}}</span></p>
+    		<p ng-show="speaker.title"><b>Presentation:</b> <span class="padding-left">{{speaker.title}}</span></p>
     	</div>
     </div>
   </ion-content>
