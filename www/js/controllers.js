@@ -14,9 +14,6 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicHistory, Year){
   $scope.year = Year.year;
-  $ionicHistory.nextViewOptions({
-    disableBack: true
-  });
 })
 
 .controller('DaysCtrl', function($scope, Sessions) {

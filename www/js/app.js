@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     Exhibitors.loadFromWeb();
     Maps.loadFromWeb();
 
-    //$location.path("/welcome");
+    $location.path("/welcome");
   });
 })
 
