@@ -46,3 +46,6 @@
 	background: url(../logoFade.png) no-repeat bottom center fixed;
 	background-size: 75% auto;
 }
+.small {
+	font-size: .75em;
+}

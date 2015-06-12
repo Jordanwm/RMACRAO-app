@@ -1,7 +1,7 @@
 <ion-view view-title="Sessions">
   <ion-content>
     <ion-list>
-		<ion-item ng-repeat="day in days" ui-sref="app.sessions({day: $index})">{{day.day}}</ion-item>
+		<ion-item ng-repeat="day in days" ui-sref="app.sessions({day: $index})">{{day.day | date: "EEEE MMMM d, yyyy"}}</ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

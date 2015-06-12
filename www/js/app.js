@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, $http, $location, Year, Exhibitors, Speakers) {
+.run(function($ionicPlatform, $http, $location, Year, Sessions, Exhibitors, Speakers) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,8 +19,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
 
     Year.loadFromWeb();
-    Exhibitors.loadFromWeb();
+    Sessions.loadFromWeb();
     Speakers.loadFromWeb();
+    Exhibitors.loadFromWeb();
 
     //$location.path("/welcome");
   });
@@ -66,7 +67,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/days.html",
-        controller: 'DaysCtrl'
+        controller: 'DaysCtrl',
+        resolve: {
+          daysPromise: function(Sessions) {
+            return Sessions.getDays();
+          }
+        }
       }
     }
   })
@@ -76,7 +82,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'menuContent': {
         templateUrl: "templates/sessions.html",
-        controller: 'SessionsCtrl'
+        controller: 'SessionsCtrl',
+        resolve: {
+          DaySessions: function(Sessions, $stateParams){
+            return Sessions.getSessions($stateParams.day).then(function(data){
+              return data;
+            });
+          }
+        }
       }
     }
   })
