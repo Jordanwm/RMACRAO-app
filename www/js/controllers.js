@@ -35,25 +35,24 @@ angular.module('starter.controllers', [])
 
 .controller('EventCtrl', function($scope, Event) {
   $scope.event = Event;
+  $scope.openSurvey = function() {
+    cordova.InAppBrowser.open($scope.event.survey, '_blank', 'location=yes');
+  };
 })
 
 .controller('SpeakersCtrl', function($scope, Speakers) {
   $scope.speakers = Speakers.speakers;
 })
-.controller('ExhibitorsCtrl', function($scope, Exhibitors) {
-  $scope.exhibitors = Exhibitors.exhibitors;
-})
-
 .controller('SpeakerCtrl', function($scope, $stateParams, Speaker){
   $scope.speaker = Speaker;
+})
+
+.controller('ExhibitorsCtrl', function($scope, Exhibitors) {
+  $scope.exhibitors = Exhibitors.exhibitors;
 })
 .controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitor) {
   $scope.exhibitor = Exhibitor;
 })
-
-
-
-
 
 .controller('MessageCtrl', function($scope, Year){
   $scope.year = Year.year;

@@ -47,14 +47,14 @@ angular.module('starter.services', ['ionic.utils'])
     dfr.resolve($localStorage.getObject('exhibitors')[index]);
 
     return dfr.promise;
-  }
+  };
   o.getExhibitors = function() {
     var dfr = $q.defer();
 
     dfr.resolve(o.exhibitors = $localStorage.getObject('exhibitors'));
 
     return dfr.promise;
-  }
+  };
   o.loadFromWeb = function(){
     return $http.get('http://mobiledev.rmacrao.org/api/exhibitors').then(function(res){
       $localStorage.setObject('exhibitors', angular.copy(res.data));
@@ -120,7 +120,7 @@ angular.module('starter.services', ['ionic.utils'])
     dfr.resolve($localStorage.getObject('days')[dayId].sessions[sessionId].events[eventId]);
 
     return dfr.promise;
-  }
+  };
   o.loadFromWeb = function(){
     return $http.get('http://mobiledev.rmacrao.org/api/days').then(function(res){
       $localStorage.setObject('days', angular.copy(res.data));

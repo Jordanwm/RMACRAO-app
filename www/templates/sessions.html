@@ -1,9 +1,22 @@
 <ion-view view-title="{{day.day | date: 'EEEE'}}">
   <ion-content>
     <ion-list>
-		<ion-item ng-repeat="session in sessions" ui-sref="app.events({day: dayId, session: $index})">
-			<p>{{session.stime | date: "h:mm"}}-{{session.ftime | date: "h:mm a"}}</p>
-			<p>{{session.name | limitTo:35}} <span ng-show="session.name.length > 35">...</span></p>
+		<ion-item ng-repeat="session in sessions">
+			<div ng-show="session.events.length > 1" ui-sref="app.events({day: dayId, session: $index})">
+				<!-- There are multiple events -->
+				<p>{{session.stime | date: "h:mm"}}-{{session.ftime | date: "h:mm a"}}</p>
+				<p>{{session.name | limitTo:35}} <span ng-show="session.name.length > 35">...</span></p>
+			</div>
+			<div ng-show="session.events.length === 1" ui-sref="app.event({day: dayId, session: $index, event: 0})">
+				<!-- There is one event -->
+				<p>{{session.stime | date: "h:mm"}}-{{session.ftime | date: "h:mm a"}}</p>
+				<p>{{session.name | limitTo:35}} <span ng-show="session.name.length > 35">...</span></p>
+			</div>
+			<div ng-show="session.events.length === 0"> 
+				<!-- There is no events currently -->
+				<p>{{session.stime | date: "h:mm"}}-{{session.ftime | date: "h:mm a"}}</p>
+				<p>{{session.name | limitTo:35}} <span ng-show="session.name.length > 35">...</span></p>
+			</div>
 		</ion-item>
     </ion-list>
   </ion-content>
