@@ -24,11 +24,12 @@ angular.module('starter.controllers', [])
   $scope.sessions = DaySessions;
 })
 
-.controller('EventsCtrl', function($scope, $stateParams, Sessions) {
+.controller('EventsCtrl', function($scope, $stateParams, Sessions, SessionEvents) {
 	$scope.dayId = $stateParams.day;
 	$scope.sessionId = $stateParams.session;
   $scope.time = Sessions.days[$stateParams.day].sessions[$stateParams.session].time;
   $scope.events = Sessions.days[$stateParams.day].sessions[$stateParams.session].events;
+  $scope.events = eventspromise;
 })
 
 .controller('EventCtrl', function($scope, $stateParams, Sessions) {

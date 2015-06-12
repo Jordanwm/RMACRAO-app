@@ -1,4 +1,4 @@
-<ion-view view-title="{{time}}">
+<ion-view view-title="{{time}} - Events">
   <ion-content>
     <ion-list>
 		<ion-item ng-repeat="event in events" ui-sref="app.event({day: dayId, session: sessionId, event: $index})">{{event.title}}</ion-item>

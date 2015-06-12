@@ -92,6 +92,7 @@ angular.module('starter.services', ['ionic.utils'])
 	var o = {};
 	o.days = [];
   o.sessions = [];
+  o.events = [];
   o.getDays = function() {
     var dfr = $q.defer();
 
@@ -103,6 +104,13 @@ angular.module('starter.services', ['ionic.utils'])
     var dfr = $q.defer();
 
     dfr.resolve($localStorage.getObject('days')[id].sessions);
+
+    return dfr.promise;
+  };
+  o.getEvents = function(id) {
+    var dfr = $q.defer();
+
+    dfr.resolve($localStorage.getObject('sessions')[id].sessions);
 
     return dfr.promise;
   };
