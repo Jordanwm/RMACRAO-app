@@ -127,4 +127,29 @@ angular.module('starter.services', ['ionic.utils'])
     });
   };
   return o;
+})
+
+.factory('Maps', function($http, $q, $localStorage){
+  var o = {};
+  o.maps = [];
+  o.getMap = function(index){
+    var dfr = $q.defer();
+
+    dfr.resolve(o.maps = $localStorage.getObject('maps')[index]);
+
+    return dfr.promise;
+  };
+  o.getMaps = function(){
+    var dfr = $q.defer();
+
+    dfr.resolve(o.maps = $localStorage.getObject('maps'));
+
+    return dfr.promise;
+  };
+  o.loadFromWeb = function(){
+    return $http.get('http://mobiledev.rmacrao.org/api/maps').then(function(res){
+      $localStorage.setObject('maps', angular.copy(res.data));
+    })
+  };
+  return o;
 });

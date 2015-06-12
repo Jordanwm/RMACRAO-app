@@ -1,0 +1,13 @@
+<ion-view view-title="{{map.name}}">
+  <ion-content>
+	<div ng-show="showErr">
+		<p>There was an error loading the image.</p>
+	</div>
+	<ion-slide-box ng-hide="showErr">
+		<ion-slide>
+			<img ng-src="http://mobiledev.rmacrao.org/{{map.img_path}}" onerror="angular.element(this).scope().error(this)" ng-show="map.img_path">
+		</ion-slide>
+	</ion-slide-box>
+	</ion-list>
+  </ion-content>
+</ion-view>

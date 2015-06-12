@@ -1,5 +1,9 @@
 <ion-view view-title="Maps">
   <ion-content>
-    <h3>Maps View</h3>
+	<ion-list>
+		<ion-item ng-repeat="map in maps">
+			<p ui-sref="app.map({map: $index})">{{map.name}}</p>
+		</ion-item>
+	</ion-list>
   </ion-content>
 </ion-view>

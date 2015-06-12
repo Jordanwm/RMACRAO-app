@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, $http, $location, Year, Sessions, Exhibitors, Speakers) {
+.run(function($ionicPlatform, $http, $location, Year, Sessions, Exhibitors, Speakers, Maps) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     Sessions.loadFromWeb();
     Speakers.loadFromWeb();
     Exhibitors.loadFromWeb();
+    Maps.loadFromWeb();
 
     //$location.path("/welcome");
   });
@@ -201,7 +202,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: "/maps",
     views: {
       'menuContent': {
-        templateUrl: "templates/maps.html"
+        templateUrl: "templates/maps.html",
+        controller: "MapsCtrl",
+        resolve: {
+          mapsPromise: function(Maps){
+            return Maps.getMaps();
+          }
+        }
+      }
+    }
+  })
+
+  .state('app.map', {
+    url: "/maps/:map",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/map.html",
+        controller: "MapCtrl",
+        resolve: {
+          Map: function(Maps, $stateParams){
+            return Maps.getMap($stateParams.map);
+          }
+        }
       }
     }
   })

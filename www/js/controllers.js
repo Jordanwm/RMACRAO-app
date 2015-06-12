@@ -12,8 +12,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('HomeCtrl', function($scope, Year){
+.controller('HomeCtrl', function($scope, $ionicHistory, Year){
   $scope.year = Year.year;
+  $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
 })
 
 .controller('DaysCtrl', function($scope, Sessions) {
@@ -52,6 +55,18 @@ angular.module('starter.controllers', [])
 })
 .controller('ExhibitorCtrl', function($scope,$stateParams, Exhibitor) {
   $scope.exhibitor = Exhibitor;
+})
+
+.controller('MapsCtrl', function($scope, Maps) {
+  $scope.maps = Maps.maps;
+})
+.controller('MapCtrl', function($scope, Map) {
+  $scope.map = Map;
+  $scope.showErr = false;
+  $scope.error = function(el){
+    el.style.display = 'none';
+    $scope.showErr = true;
+  };
 })
 
 .controller('MessageCtrl', function($scope, Year){
