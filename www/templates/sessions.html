@@ -2,7 +2,8 @@
   <ion-content>
     <ion-list>
 		<ion-item ng-repeat="session in sessions" ui-sref="app.events({day: dayId, session: $index})">
-			<div class="small" >{{session.stime | date: "h:mm a"}} - {{session.ftime | date: "h:mm a"}} | {{session.name | limitTo:20}} <span ng-show="session.name.length > 20">...</span></div>
+			<p>{{session.stime | date: "h:mm"}}-{{session.ftime | date: "h:mm a"}}</p>
+			<p>{{session.name | limitTo:35}} <span ng-show="session.name.length > 35">...</span></p>
 		</ion-item>
     </ion-list>
   </ion-content>

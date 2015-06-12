@@ -20,7 +20,8 @@ angular.module('starter.controllers', [])
   $scope.days = Sessions.days;
 })
 
-.controller('SessionsCtrl', function($scope, DaySessions) {
+.controller('SessionsCtrl', function($scope, $stateParams, DaySessions) {
+  $scope.dayId = $stateParams.day;
   $scope.sessions = DaySessions;
 })
 

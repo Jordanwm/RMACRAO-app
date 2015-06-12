@@ -5,8 +5,9 @@
     		{{speaker.session}} Speaker
     	</div>
     	<div class="item item-text-wrap">
-    		<p ng-show="speaker.day"><b>Day:</b> {{speaker.day}}</p>
-    		<p ng-show="speaker.time"><b>Time:</b> {{speaker.time}}</p>
+            <img ng-src="http://mobiledev.rmacrao.org/{{speaker.img_path}}" onerror="this.style.display = 'none'" ng-show="speaker.img_path">
+    		<p ng-show="speaker.day"><b>Day:</b> {{speaker.day | date: "EEEE MMMM d, yyyy"}}</p>
+    		<p ng-show="speaker.stime && speaker.ftime"><b>Time:</b> {{speaker.stime | date: "h:mm a"}} - {{speaker.ftime | date: "h:mm a"}}</p>
     		<p ng-show="speaker.location"><b>Location:</b> {{speaker.location}}</p>
     		<p ng-show="speaker.title"><b>Presentation:</b> {{speaker.title}}</p>
     	</div>
