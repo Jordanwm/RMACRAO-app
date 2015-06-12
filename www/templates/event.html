@@ -14,7 +14,11 @@
 
             <p ng-show="event.facilitators.length === 1"><b>Facilitator:</b> <span class="padding-left">{{event.facilitators[0].name}}<i ng-show="event.facilitators[0].title">, {{event.facilitators[0].title}}</i></span></p>
 
+            <p ng-show="event.sponser"><b>Sponser:</b> <span class="padding-left">{{event.sponser}}</span></p>
+
             <p ng-show="event.location"><b>Location:</b> <span class="padding-left">{{event.location}}</span></p>
+
+            <p ng-show="event.survey"><b><a href="{{event.survey}}" target="_blank">Event Survey</a></b></p>
     	</div>
     </div>
   </ion-content>
