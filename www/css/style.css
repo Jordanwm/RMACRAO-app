@@ -1,9 +1,22 @@
 /* Empty. Add your own CSS if you like */
+h1 {
+	font-size: 1.2em;
+	text-align: center;
+	color: #241F78;
+}
+.card {
+	box-shadow: 1px 1px 5px black;
+	background-color: transparent;
+}
 .bar.bar-stable {
 	background-color: #241F78;
 }
 .bar.bar-stable .title{
 	color: white;
+}
+.item.item-text-wrap {
+	background-color: transparent;
+	border-color: transparent;
 }
 .bar.bar-stable .button {
 	color: white;
@@ -14,15 +27,22 @@
 .button.button-stable {
 	background-color: #241F78;
 	color: white;
+	border-width: 0px;
+	box-shadow: 2px 2px 5px black;
 }
 .button.button-stable.activated {
 	background-color: #3830CF;
 }
 .button.button-stable:hover {
 	color: white;
+	box-shadow: 0.5px 0.5px 5px white;
 }
 .item-divider {
 	text-align: center;
+	background-color: #2E633C;
+	color: white;
+	border-width: 0;
+	box-shadow: 2px 2px 5px black;
 }
 .logo {
 	width: 50%;
@@ -31,12 +51,16 @@
 }
 .button.button-balanced {
 	background-color: #2E633C;
-	border-color: #241F78;
+	border-width: 0px;
+	box-shadow: 2px 2px 5px #241F78;
 	width: 45%;
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-top: 2%;
 	margin-bottom: 2%;
+}
+.button.button-balanced:hover {
+	box-shadow: 0.5px 0.5px 5px #241F78;
 }
 .button.button-balanced.activated {
 	background-color: #4EA365;
@@ -49,4 +73,11 @@
 .padding-left {
 	padding-left:20px;
 	display:block;
+}
+.speakerPic {
+	width: 35%;
+	height: auto;
+	margin-top: 4%;
+	margin-left: 32.5%;
+	box-shadow: 2px 2px 2px black;
 }

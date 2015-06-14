@@ -1,4 +1,4 @@
-<ion-view view-title="">
+<ion-view view-title="{{event.title}}">
   <ion-content>
     <div class="card">
     	<div class="item item-text-wrap">
@@ -6,7 +6,7 @@
 
     		<p ng-show="event.description"><b>Description:</b> <span class="padding-left">{{event.description}}</span></p>
 
-            <p ng-show="event.presenters.length > 1"><b>Presenters:</b> <span class="padding-left" ng-repeat="presenter in event.presenters">{{presenter.name}}<i ng-show="presenter.title">, {{presenter.title}}</i></span></p>
+            <p ng-show="event.presenters.length > 1"><b>Presenters:</b> <span class="padding-left" ng-repeat="presenter in event.presenters">{{presenter.name}}<i ng-show="presenter.title">, {{presenter.title}}{{session.stime}}</i></span></p>
 
             <p ng-show="event.presenters.length === 1"><b>Presenter:</b> <span class="padding-left">{{event.presenters[0].name}}<i ng-show="event.presenters[0].title">, {{event.presenters[0].title}}</i></span></p>
 

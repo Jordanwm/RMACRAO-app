@@ -1,12 +1,13 @@
-<ion-view view-title="{{speaker.name}}">
+<ion-view view-title="SPEAKER">
   <ion-content>
     <div class="card">
     	<div class="item item-divider">
     		{{speaker.session}} Speaker
     	</div>
     	<div class="item item-text-wrap">
-            <img ng-src="http://mobiledev.rmacrao.org/{{speaker.img_path}}" onerror="this.style.display = 'none'" ng-show="speaker.img_path">
-    		<p ng-show="speaker.day"><b>Day:</b> <span class="padding-left">{{speaker.day | date: "EEEE MMMM d, yyyy"}}</span></p>
+            <img ng-src="http://mobiledev.rmacrao.org/{{speaker.img_path}}" onerror="this.style.display = 'none'" ng-show="speaker.img_path" class="speakerPic">
+            <h1><b>Dr. {{speaker.name}}</b></h1>
+            <p ng-show="speaker.day"><b>Day:</b> <span class="padding-left">{{speaker.day | date: "EEEE, MMMM d, yyyy"}}</span></p>
     		<p ng-show="speaker.stime && speaker.ftime"><b>Time:</b> <span class="padding-left">{{speaker.stime | date: "h:mm a"}} - {{speaker.ftime | date: "h:mm a"}}</span></p>
     		<p ng-show="speaker.location"><b>Location:</b> <span class="padding-left">{{speaker.location}}</span></p>
     		<p ng-show="speaker.title"><b>Presentation:</b> <span class="padding-left">{{speaker.title}}</span></p>
