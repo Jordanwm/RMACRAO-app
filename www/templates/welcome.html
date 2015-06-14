@@ -7,9 +7,9 @@
     <h3 class="text-center">Welcome to the {{year.title}}</h3>
     <h5 class="text-center">{{year.sdate | date: "EEE MMM d"}} - {{year.fdate | date: "EEE MMM d, yyyy"}}</h5>
     <div class="card">
-    	<div class="item-divider" ng-click="showMessage();">Message From the President<i style="float:right; margin-right:10px;" class="icon" ng-class="{'ion-plus': !show, 'ion-minus': show}"></i></div>
+    	<div class="item-divider" ng-click="showMessage();">Message From the President<i class="icon pull-right" ng-class="{'ion-plus': !show, 'ion-minus': show}"></i></div>
     	<div class="item item-text-wrap" ng-show="show">
-            <p style="white-space:pre-wrap;">{{year.president_message}}</p>
+            <p id="message">{{year.president_message}}</p>
     	</div>
     </div>
     <button class = "button button-full button-stable" ui-sref="app.home">Enter</button>
