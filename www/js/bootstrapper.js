@@ -2,7 +2,7 @@ var app = angular.module('bootstrapper', ['starter.services', 'ionic', 'ionic.ut
 
 app.run(function($q, $ionicLoading, $ionicPlatform, Year, Sessions, Exhibitors, Speakers, Maps){
 	$ionicLoading.show({
-		template: 'Loading...'
+		template: '<ion-spinner></ion-spinner><p>Loading...</p>'
 	})
 
 	var promises = [];

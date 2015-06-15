@@ -46,11 +46,6 @@ h1 {
 	border-width: 0;
 	/*box-shadow: 2px 2px 5px black;*/
 }
-.logo {
-	width: 50%;
-	height: auto;
-	margin-left: 25%;
-}
 .button.button-balanced {
 	background-color: #2E633C;
 	border-width: 0px;
@@ -67,6 +62,11 @@ h1 {
 .button.button-balanced.activated {
 	background-color: #4EA365;
 	border-color: #241F78;
+}
+.logo {
+	width: 50%;
+	height: auto;
+	margin-left: 25%;
 }
 .scroll-content{
 	background: url(../logoFade.png) no-repeat bottom center fixed;
