@@ -1,7 +1,10 @@
 <ion-view view-title="{{session.name}}">
   <ion-content>
     <ion-list>
-		<ion-item ng-repeat="event in events" ui-sref="app.event({day: dayId, session: sessionId, event: $index})">
+    	<ion-item>
+			<p>There are no events available for this session.</p>
+    	</ion-item>
+		<ion-item ng-repeat="event in events" ui-sref="app.event({day: dayId, session: sessionId, event: $index})" ng-show="events.length > 0">
 			<p>{{event.title}}</p>
 		</ion-item>
     </ion-list>

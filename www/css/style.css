@@ -6,7 +6,7 @@ h1 {
 }
 .card {
 	box-shadow: 1px 1px 5px black;
-	background-color: transparent;
+	/*background-color: transparent;*/
 }
 .bar.bar-stable {
 	background-color: #241F78;
@@ -42,7 +42,7 @@ h1 {
 	background-color: #2E633C;
 	color: white;
 	border-width: 0;
-	box-shadow: 2px 2px 5px black;
+	/*box-shadow: 2px 2px 5px black;*/
 }
 .logo {
 	width: 50%;
@@ -82,6 +82,7 @@ h1 {
 	box-shadow: 2px 2px 2px black;
 }
 .map-container {
+	padding-top:43px;
 	width: 100%; 
 	height: 100%;
 }
