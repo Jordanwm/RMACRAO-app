@@ -20,7 +20,8 @@
     "com.ionic.keyboard",
     "cordova-plugin-whitelist",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-network-information"
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -15,8 +15,8 @@ app.run(function($q, $ionicLoading, $ionicPlatform, Year, Sessions, Exhibitors, 
 
     $q.all(promises).then(function(results){
     	$ionicPlatform.ready(function() {
-			angular.bootstrap(document, ['starter']);
 			$ionicLoading.hide();
+			angular.bootstrap(document, ['starter']);
 		});
     });
 });
