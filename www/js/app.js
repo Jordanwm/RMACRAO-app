@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils'])
 
-.run(function($ionicPlatform, $http, $location, Year, Sessions, Exhibitors, Speakers, Maps) {
+.run(function($ionicPlatform, $location) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,12 +17,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-    Year.loadFromWeb();
-    Sessions.loadFromWeb();
-    Speakers.loadFromWeb();
-    Exhibitors.loadFromWeb();
-    Maps.loadFromWeb();
 
     $location.path("/welcome");
   });
