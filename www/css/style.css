@@ -6,6 +6,8 @@ h1 {
 }
 .card {
 	box-shadow: 1px 1px 5px black;
+	padding-top: 0;
+	padding-bottom: 0;
 	/*background-color: transparent;*/
 }
 .bar.bar-stable {
