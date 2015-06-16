@@ -15,11 +15,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      //StatusBar.styleDefault();
     }
+
     document.addEventListener("deviceready", function(){
       $cordovaSplashscreen.hide();
     });
+
     $location.path("/welcome");
   });
 })
