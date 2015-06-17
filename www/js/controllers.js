@@ -40,11 +40,34 @@ angular.module('starter.controllers', [])
   $scope.events = SessionEvents.events;
 })
 
-.controller('EventCtrl', function($scope, Event) {
+.controller('EventCtrl', function($scope, $sce, $ionicModal, Event) {
   $scope.event = Event;
-  $scope.openSurvey = function() {
-    cordova.InAppBrowser.open($scope.event.survey, '_blank', 'location=yes');
+  $scope.survey = $sce.trustAsResourceUrl($scope.event.survey + '?embedded=true');
+
+  $ionicModal.fromTemplateUrl('templates/survey.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
   };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  // $scope.openSurvey = function() {
+  //   cordova.InAppBrowser.open($scope.event.survey, '_blank', 'location=yes');
+  // };
+
 })
 
 .controller('SpeakersCtrl', function($scope, Speakers) {

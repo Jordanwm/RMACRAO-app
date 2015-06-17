@@ -1,0 +1,11 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-stable">
+		<h1 class="title">EVALUATION</h1>
+		<button class="button button-clear button-primary" ng-click="modal.hide()">Close</button>
+	</ion-header-bar>
+	<ion-content class="padding" scroll="false">
+		<iframe ng-src="{{survey}}" frameborder="0" class="survey"></iframe>
+	</ion-content>
+</ion-modal-view>
+
+<!--{{trustSrc(event.survey + '?embedded=true')}}  -->
