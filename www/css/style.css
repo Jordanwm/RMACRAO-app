@@ -87,6 +87,8 @@ h1 {
 	padding-top:43px;
 	width: 100%; 
 	height: 100%;
+	background-color: black;
+	margin-top: 0;
 }
 .pull-right {
 	float:right; 
