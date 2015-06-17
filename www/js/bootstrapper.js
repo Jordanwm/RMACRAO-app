@@ -1,15 +1,13 @@
 var app = angular.module('bootstrapper', ['starter.services', 'ionic', 'ionic.utils', 'ngCordova']);
 
-app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, $cordovaNetwork, Year, Sessions, Exhibitors, Speakers, Maps){
+app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, $cordovaNetwork, $state, Year, Sessions, Exhibitors, Speakers, Maps){
 	document.addEventListener("deviceready", function () {
 		if ($cordovaNetwork.getNetwork() == "none" && !$localStorage.getObject('year').year) {
 			$ionicPopup.confirm({
 				title: "Internet Disconnected",
 				content: "The internet is disconnected on your device. Please try again later."
 			}).then(function(result) {
-				if(!result) {
-					navigator.app.exitApp();
-				}
+				navigator.app.exitApp();
 			});
 		} else if ($cordovaNetwork.getNetwork() == "none") {
 			$ionicLoading.hide();
@@ -17,6 +15,16 @@ app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, 
 		} else {
 			load($ionicLoading, $q, Year, Sessions, Speakers, Exhibitors, Maps);
 		}
+
+		//Change default behavior of back button
+	    $ionicPlatform.registerBackButtonAction(function(event){
+	      console.log("Added event here")
+	      if ($state.current.name == "app.home"){
+	        navigator.app.exitApp();
+	      } else {
+	        navigator.app.backHistory();
+	      }
+	    }, 100);
 	});
 });
 
