@@ -1,6 +1,6 @@
 var app = angular.module('bootstrapper', ['starter.services', 'ionic', 'ionic.utils', 'ngCordova']);
 
-app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, $cordovaNetwork, $state, Year, Sessions, Exhibitors, Speakers, Maps){
+app.run(function($q, $ionicLoading, $ionicPlatform, $ionicHistory, $ionicPopup, $localStorage, $cordovaNetwork, $state, Year, Sessions, Exhibitors, Speakers, Maps){
 	document.addEventListener("deviceready", function () {
 		if ($cordovaNetwork.getNetwork() == "none" && !$localStorage.getObject('year').year) {
 			$ionicPopup.alert({
@@ -22,7 +22,7 @@ app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, 
 	      if ($state.current.name == "app.home"){
 	        navigator.app.exitApp();
 	      } else {
-	        navigator.app.backHistory();
+	        $ionicHistory.goBack();
 	      }
 	    }, 100);
 	});

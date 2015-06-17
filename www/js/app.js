@@ -7,7 +7,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.utils', 'ngCordova'])
 
 .run(function($ionicPlatform, $cordovaSplashscreen, $location, $state) {
-  $ionicPlatform.ready(function() {
+  document.addEventListener("deviceready", function(){
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -18,10 +18,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //StatusBar.styleDefault();
     }
 
-    document.addEventListener("deviceready", function(){
-      $cordovaSplashscreen.hide();
-    });
-
+    $cordovaSplashscreen.hide();
     $location.path("/welcome");
   });
 })

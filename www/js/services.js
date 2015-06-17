@@ -135,7 +135,7 @@ angular.module('starter.services', ['ionic.utils'])
   o.getMap = function(index){
     var dfr = $q.defer();
 
-    dfr.resolve(o.maps = $localStorage.getObject('maps')[index]);
+    dfr.resolve($localStorage.getObject('maps')[index]);
 
     return dfr.promise;
   };

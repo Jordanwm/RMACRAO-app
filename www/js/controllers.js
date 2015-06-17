@@ -20,10 +20,17 @@ angular.module('starter.controllers', [])
   $scope.days = Sessions.days;
 })
 
-.controller('SessionsCtrl', function($scope, $stateParams, DaySessions) {
+.controller('SessionsCtrl', function($scope, $state, $stateParams, DaySessions) {
   $scope.dayId = $stateParams.day;
   $scope.day = DaySessions;
   $scope.sessions = DaySessions.sessions;
+  $scope.goToEvents = function(index){
+    if ($scope.sessions[index].events.length > 1 || $scope.sessions[index].events.length === 0){
+      $state.go('app.events', {day: $scope.dayId, session: index});
+    } else if ($scope.sessions[index].events.length === 1) {
+      $state.go('app.event', {day: $scope.dayId, session: index, event: 0});
+    }
+  };
 })
 
 .controller('EventsCtrl', function($scope, $stateParams, Sessions, SessionEvents) {

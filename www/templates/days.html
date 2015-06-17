@@ -1,11 +1,11 @@
 <ion-view view-title="SESSIONS">
   <ion-content>
     <ion-list>
-		<ion-item ng-show="days.length > 0" ng-repeat="day in days" ui-sref="app.sessions({day: $index})">
-			<p>{{day.day | date: "EEEE, MMMM d, yyyy"}}</p>
-		</ion-item>
 		<ion-item ng-show="days.length == 0">
 			<p>There are no days available.</p>
+		</ion-item>
+		<ion-item ng-show="days.length > 0" ng-repeat="day in days" ui-sref="app.sessions({day: $index})">
+			<p>{{day.day | date: "EEEE, MMMM d, yyyy"}}</p>
 		</ion-item>
     </ion-list>
   </ion-content>
