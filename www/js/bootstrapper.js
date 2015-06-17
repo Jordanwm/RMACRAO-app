@@ -3,7 +3,7 @@ var app = angular.module('bootstrapper', ['starter.services', 'ionic', 'ionic.ut
 app.run(function($q, $ionicLoading, $ionicPlatform, $ionicPopup, $localStorage, $cordovaNetwork, $state, Year, Sessions, Exhibitors, Speakers, Maps){
 	document.addEventListener("deviceready", function () {
 		if ($cordovaNetwork.getNetwork() == "none" && !$localStorage.getObject('year').year) {
-			$ionicPopup.confirm({
+			$ionicPopup.alert({
 				title: "Internet Disconnected",
 				content: "The internet is disconnected on your device. Please try again later."
 			}).then(function(result) {
