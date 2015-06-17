@@ -132,13 +132,6 @@ angular.module('starter.services', ['ionic.utils'])
 .factory('Maps', function($http, $q, $localStorage){
   var o = {};
   o.maps = [];
-  o.getMap = function(index){
-    var dfr = $q.defer();
-
-    dfr.resolve($localStorage.getObject('maps')[index]);
-
-    return dfr.promise;
-  };
   o.getMaps = function(){
     var dfr = $q.defer();
 

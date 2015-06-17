@@ -207,22 +207,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-
-  .state('app.map', {
-    url: "/maps/:map",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/map.html",
-        controller: "MapCtrl",
-        resolve: {
-          Map: function(Maps, $stateParams){
-            return Maps.getMap($stateParams.map);
-          }
-        }
-      }
-    }
-  })
-
+  
   .state('app.president_message', {
     url: "/message",
     views: {

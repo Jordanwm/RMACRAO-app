@@ -1,8 +1,12 @@
-<ion-view view-title="{{map.name | uppercase}}">
-	<ion-scroll zooming="true" direction="xy" class="map-container">
-		<div ng-show="showErr">
-			<p>There was an error loading the image.</p>
-		</div>
-		<img ng-hide="showErr" ng-src="http://mobiledev.rmacrao.org/{{map.img_path}}" onerror="angular.element(this).scope().error(this)">
-	</ion-scroll>
-</ion-view>
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-stable">
+		<h1 class="title">{{name | uppercase}}</h1>
+		<button class="button button-clear button-primary" ng-click="modal.hide()">Close</button>
+	</ion-header-bar>
+	<ion-content class="padding" scroll="false">
+		<ion-scroll zooming="true" direction="xy" delegate-handle="zoom-pane" class="zoom-pane" min-zoom="1" max-zoom="8" scrollbar-x="false" scrollbar-y="false">   
+			<p ng-show="showErr">There was an error loading the image</p>
+			<img ng-hide="showErr" ng-src="{{imageSrc}}" onerror="angular.element(this).scope().error(this)">
+		</ion-scroll>
+	</ion-content>
+</ion-modal-view>

@@ -1,7 +1,7 @@
 <ion-view view-title="MAPS">
   <ion-content>
 	<ion-list>
-		<ion-item ng-repeat="map in maps" ui-sref="app.map({map: $index})">
+		<ion-item ng-repeat="map in maps" ng-click="showImage($index)">
 			<p>{{map.name}}</p>
 		</ion-item>
 	</ion-list>

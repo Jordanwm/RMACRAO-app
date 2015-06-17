@@ -61,11 +61,40 @@ angular.module('starter.controllers', [])
   $scope.exhibitor = Exhibitor;
 })
 
-.controller('MapsCtrl', function($scope, Maps) {
+.controller('MapsCtrl', function($scope, $ionicModal, Maps) {
   $scope.maps = Maps.maps;
-})
-.controller('MapCtrl', function($scope, Map) {
-  $scope.map = Map;
+
+  $ionicModal.fromTemplateUrl('templates/map.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  $scope.imageSrc = '';
+  $scope.name = '';
+
+  $scope.showImage = function(index) {
+    $scope.imageSrc = "http://mobiledev.rmacrao.org/";
+    $scope.imageSrc += $scope.maps[index].img_path;
+    console.log($scope.imageSrc);
+    $scope.name = $scope.maps[index].name
+    $scope.openModal();
+  }
+
   $scope.showErr = false;
   $scope.error = function(el){
     el.style.display = 'none';
