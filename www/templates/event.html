@@ -1,8 +1,8 @@
-<ion-view view-title="Event">
+<ion-view view-title="EVENT">
   <ion-content>
     <div class="card">
-        <div class="item item-divider">{{event.title}}</div>
-    	<div class="item item-text-wrap">
+        <div class="item item-text-wrap">
+            <p ng-show="event.title"><b>Title:</b> <span class="padding-left">{{event.title}}</span></p>
             <p ng-show="event.description"><b>Description:</b> <span class="padding-left">{{event.description}}</span></p>
 
             <p ng-show="event.presenters.length > 1"><b>Presenters:</b> <span class="padding-left" ng-repeat="presenter in event.presenters">{{presenter.name}}<i ng-show="presenter.title">, {{presenter.title}}{{session.stime}}</i></span></p>
