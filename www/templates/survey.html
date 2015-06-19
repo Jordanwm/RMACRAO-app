@@ -3,8 +3,8 @@
 		<h1 class="title">EVALUATION</h1>
 		<button class="button button-clear button-primary" ng-click="modal.hide()">Close</button>
 	</ion-header-bar>
-	<ion-content class="padding" scroll="false">
-		<iframe ng-src="{{survey}}" frameborder="0" class="survey"></iframe>
+	<ion-content class="padding" scroll="true" overflow-scroll="true">
+		<iframe ng-src="{{survey}}" frameborder="0"></iframe>
 	</ion-content>
 </ion-modal-view>
 
