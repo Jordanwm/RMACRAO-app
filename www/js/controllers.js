@@ -1,3 +1,33 @@
+function evaluationModal($scope, $ionicModal, $sce, $q, survey){
+  var dfr = $q.defer();
+
+  $scope.survey = $sce.trustAsResourceUrl(survey + '?embedded=true');
+
+  $ionicModal.fromTemplateUrl('templates/survey.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+    dfr.resolve();
+  });
+
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  return dfr.promise;
+}
+
+
 angular.module('starter.controllers', [])
 
 .controller('WelcomeCtrl', function($scope, $ionicHistory, $ionicScrollDelegate, Year){
@@ -40,34 +70,10 @@ angular.module('starter.controllers', [])
   $scope.events = SessionEvents.events;
 })
 
-.controller('EventCtrl', function($scope, $sce, $ionicModal, Event) {
+.controller('EventCtrl', function($scope, $sce, $q, $ionicModal, Event) {
   $scope.event = Event;
-  $scope.survey = $sce.trustAsResourceUrl($scope.event.survey + '?embedded=true');
 
-  $ionicModal.fromTemplateUrl('templates/survey.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-
-  // $scope.openSurvey = function() {
-  //   cordova.InAppBrowser.open($scope.event.survey, '_blank', 'location=yes');
-  // };
-
+  evaluationModal($scope, $ionicModal, $sce, $q, $scope.event.survey);
 })
 
 .controller('SpeakersCtrl', function($scope, Speakers) {
@@ -123,6 +129,21 @@ angular.module('starter.controllers', [])
     el.style.display = 'none';
     $scope.showErr = true;
   };
+})
+
+.controller('EvaluationCtrl', function($scope, $cordovaBarcodeScanner, $sce, $q, $ionicModal){
+
+  $scope.scanBarcode = function(){
+    $cordovaBarcodeScanner.scan().then(function(imageData){
+      // Setup modal
+      evaluationModal($scope, $ionicModal, $sce, $q, imageData.text).then(function(){
+        // Open the modal
+        $scope.openModal();
+      });
+    }, function(error){
+      console.log(error);
+    })
+  }
 })
 
 .controller('MessageCtrl', function($scope, Year){

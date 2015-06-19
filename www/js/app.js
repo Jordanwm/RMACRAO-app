@@ -207,6 +207,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+
+  .state('app.evaluations', {
+    url: "/evaluations",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/evaluation.html",
+        controller: "EvaluationCtrl"
+      }
+    }
+  })
   
   .state('app.president_message', {
     url: "/message",
